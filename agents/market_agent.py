@@ -40,7 +40,7 @@ def get_market_agent():
 {summary}
 
 [산업 정보]
-{industry_info}
+{context}
 """)
     ])
     llm = ChatOpenAI(temperature=0)
