@@ -1,5 +1,4 @@
 # app.py
-
 import os
 from dotenv import load_dotenv
 from langchain.embeddings import OpenAIEmbeddings
@@ -14,7 +13,10 @@ from agents.market_agent import get_market_agent
 from agents.risk_agent import get_risk_agent
 from agents.decision_agent import get_decision_agent
 
+
 # ✅ 환경 로딩
+# 1. 환경변수 로드 및 설정
+
 load_dotenv()
 query = "보이저엑스 관련 정보"
 
