@@ -86,10 +86,10 @@ graph TD
 
 ## Contributors 
 
-- 김다빈 : decision_agent 설계, Prompt Engineering, PDF Parsing
-- 김민수 : risk_agent 설계, Prompt Engineering, Pinecone Integration
-- 장수희 : market_agent 설계, Prompt Engineering, report_agent 설계, 문서화
-- 하동헌 : summary_agent 설계, Prompt Engineering, STT 데이터 처리
+- 김다빈 : Prompt Engineering, decision_agent 설계, PDF Parsing, Streamlit UI 개발
+- 김민수 : Prompt Engineering, risk_agent 설계, Pinecone Integration, Streamlit UI 개발
+- 장수희 : Prompt Engineering, market_agent 설계, report_agent 설계, 문서화
+- 하동헌 : Prompt Engineering, summary_agent 설계, STT 데이터 처리
 
 ## User Interface Overview
 <img src="https://github.com/user-attachments/assets/d4d13821-a84c-4b98-a130-62e88be772a5"/>
