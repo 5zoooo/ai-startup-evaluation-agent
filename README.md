@@ -1,51 +1,65 @@
-# Git Commit Convention
+# AI Startup Investment Evaluation Agent
+본 프로젝트는 AI 스타트업의 기술력, 시장성, 리스크 등을 다각적으로 평가하여 투자 가능성을 자동으로 분석하는 Agentic RAG 기반 실습 프로젝트입니다.
 
-본 저장소에서는 일관된 커밋 메시지 작성을 위해 아래와 같은 컨벤션을 적용한다.
+## Overview
 
-## 커밋 메시지 구조
+- Objective: AI 스타트업에 대한 투자 관점에서 핵심 기술, 시장성, 리스크를 분석하여 투자 보고서 자동 생성
+- Method: Agent Orchestration + Retrieval Augmented Generation (Agentic RAG)
+- Tools: Pinecone, LangChain, OpenAI API
+
+## Features
+
+- PDF, 뉴스, STT 기반 정보 임베딩 및 검색 (Pinecone 기반)
+- 평가 기준별 에이전트 (기업 요약, 시장성 평가, 리스크 분석, 투자 의사결정, 보고서 생성)
+- 최종 투자 보고서 자동 생성 (투자 권고: 유망 / 보류 / 회피 등)
+
+## Tech Stack 
+
+| Category   | Details                                         |
+|------------|-------------------------------------------------|
+| Framework  | LangChain, Python                               |
+| LLM        | GPT-3.5-turbo via OpenAI API                    |
+| Retrieval  | Pinecone Vector Store                           |
+| Architecture | Agent Orchestration (Step-by-Step Pipeline)  |
+
+## Agents
+ 
+| Agent             | Description                          |
+|--------------------|-------------------------------------|
+| summary_agent      | 기업 핵심 요약 (기술, 제품, 개요)  |
+| market_agent       | 시장성 및 성장 가능성 평가         |
+| risk_agent         | 투자 리스크 분석                  |
+| decision_agent     | 투자 적합성 종합 평가              |
+| report_agent       | 최종 투자 보고서 생성              |
+
+## Architecture
 
 ```
-[태그] 제목
+graph TD
+    A[기업 문서 및 뉴스] -->|임베딩| V[Pinecone]
+    V --> AG1[1. summary_agent (기업 요약)]
+    AG1 --> AG2[2. market_agent (시장성 평가)]
+    AG1 --> AG3[3. risk_agent (리스크 분석)]
+    AG2 --> AG4[4. decision_agent (투자 평가)]
+    AG3 --> AG4
+    AG4 --> AG5[5. report_agent (투자 보고서)]
+    AG5 --> R[최종 투자 보고서]
 ```
 
-- 제목은 한글 또는 영어로 작성할 수 있으며, 명확하고 간결하게 변경사항을 요약한다.
-- 제목의 첫 글자는 대문자로 시작한다.
-- 태그와 제목 사이는 반드시 띄어쓴다.
-
-## 태그 규칙
-
-| 태그         | 설명                                      |
-|------------|-----------------------------------------|
-| [Add]      | 신규 파일 업로드        |
-| [Docs]     | 문서 추가/수정                             |
-| [Feat]     | 새로운 기능 추가                           |
-| [Fix]      | 버그 수정                                 |
-| [Refactor] | 코드 리팩토링 (기능 변화 없음)                |
-| [Style]    | 코드 포맷팅, 세미콜론 누락, 코드 스타일 변경 (기능 변화 없음) |
-| [Test]     | 테스트 코드 추가/수정                         |
-| [Chore]    | 기타 허드렛일       |
-
-## 예시
+## Directory Structure
 
 ```
-[Add] 배너 이미지 추가
-
-[Docs] README.md에 Git 컨벤션 추가
-
-[Feat] 회원가입 API 추가
-
-[Fix] 로그인 시 비밀번호 검증 오류 수정
-
-[Refactor] 게시글 리스트 조회 쿼리 최적화
-
-[Style] 코드 정리 및 불필요한 공백 제거
-
-[Test] 회원가입 테스트 케이스 추가
-
-[Chore] 패키지 업데이트 및 빌드 스크립트 수정
+├── data/                  # 스타트업 PDF 문서, 뉴스, 영상 STT 등의 pdf 파일
+├── agents/                # Agent 모듈 (summary, market, risk, decision, report)
+├── prompts/               # 프롬프트 템플릿
+├── outputs/               # 최종 투자 보고서 저장
+├── app.py                 # 전체 파이프라인 실행 스크립트
+└── README.md
 ```
 
-## 참고 사항
-- 커밋 메시지는 현재형으로 작성한다. (예: 추가한다, 수정한다)
-- 불필요한 커밋은 최소화하고, 의미 있는 단위로 커밋을 나눈다.
-- 커밋 제목은 50자 이내로 작성한다.
+## Contributors 
+
+- 김다빈 : decision_agent 설계, Prompt Engineering, PDF Parsing
+- 김민수 : risk_agent 설계, Prompt Engineering, Pinecone Integration
+- 장수희 : market_agent 설계, Prompt Engineering, report_agent 설계, 문서화
+- 하동헌 : summary_agent 설계, Prompt Engineering, STT 데이터 처리
