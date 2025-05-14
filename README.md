@@ -27,6 +27,8 @@
 | PDF Generator  | WeasyPrint (HTML → PDF via markdown2)                 |
 
 
+<img src ="https://github.com/user-attachments/assets/8da16cec-db8e-40c9-8d59-65ba41dac019"/>
+
 ## Agents
  
 | Agent             | Description                          |
@@ -62,27 +64,8 @@ graph TD
 └── README.md
 ```
 
-## Sample Output
 
 
-
-```
-
-1. 기업 요약
- → 스타트업의 제품/서비스, 핵심 기술, 비즈니스 모델, 시장 타겟 등 주요 정보를 간결하게 요약
-
-2. 시장성 평가
- → 시장 규모, 성장률(CAGR), 경쟁 강도, 진입 장벽, 산업 트렌드 적합성 등 다섯 가지 항목별로 정리하여 분석
-
-3. 리스크 분석
- → 기술, 시장, 조직, 기타 리스크에 대해
- • 설명 + 위험도(낮음/중간/높음)로 구성된 평가
-
-4. 최종 판단
- → 체크리스트 기반 정성 판단 + 가중치 기반 정량 평가(100점 만점)를 포함
- → 최종적으로 ‘투자 적합 / 보류 / 부적합’ 판단과 함께 명확한 이유 제시
-
-```
 
 ## Contributors 
 
@@ -93,3 +76,6 @@ graph TD
 
 ## User Interface Overview
 <img src="https://github.com/user-attachments/assets/d4d13821-a84c-4b98-a130-62e88be772a5"/>
+
+
+
