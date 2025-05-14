@@ -1,5 +1,4 @@
 # app.py
-
 import os
 from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
@@ -12,7 +11,6 @@ from agents.summary_agent import get_summary_agent
 from agents.market_agent import get_market_agent
 from agents.risk_agent import get_risk_agent
 from agents.decision_agent import get_decision_agent
-
 
 # 1. 환경변수 로드 및 설정
 load_dotenv()
