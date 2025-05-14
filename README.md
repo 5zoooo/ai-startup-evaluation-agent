@@ -5,7 +5,7 @@
 
 - Objective: AI 스타트업에 대한 투자 관점에서 핵심 기술, 시장성, 리스크를 분석하여 투자 보고서 자동 생성
 - Method: Agent Orchestration + Retrieval Augmented Generation (Agentic RAG)
-- Tools: Pinecone, LangChain, OpenAI API
+- Tools: LangChain, LangGraph, Pinecone, OpenAI API, WeasyPrint
 
 ## Features
 
@@ -13,14 +13,21 @@
 - 평가 기준별 에이전트 (기업 요약, 시장성 평가, 리스크 분석, 투자 의사결정, 보고서 생성)
 - 최종 투자 보고서 자동 생성 (투자 권고: 유망 / 보류 / 회피 등)
 
+
 ## Tech Stack 
 
-| Category   | Details                                         |
-|------------|-------------------------------------------------|
-| Framework  | LangChain, Python                               |
-| LLM        | GPT-3.5-turbo via OpenAI API                    |
-| Retrieval  | Pinecone Vector Store                           |
-| Architecture | Agent Orchestration (Step-by-Step Pipeline)  |
+|## Tech Stack 
+
+| Category       | Details                                                |
+|----------------|--------------------------------------------------------|
+| Framework      | LangChain, LangGraph, Python                           |
+| LLM            | GPT-3.5 / GPT-4o via OpenAI API                        |
+| Embeddings     | OpenAIEmbeddings                                       |
+| Vector Store   | Pinecone Vector DB                                     |
+| Retrieval      | Pinecone Retriever (k=5 Top-K Search)                  |
+| Orchestration  | LangGraph (Step-by-Step Agent Flow)                   |
+| PDF Generator  | WeasyPrint (HTML → PDF via markdown2)                 |
+
 
 ## Agents
  
@@ -55,6 +62,28 @@ graph TD
 ├── outputs/               # 최종 투자 보고서 저장
 ├── app.py                 # 전체 파이프라인 실행 스크립트
 └── README.md
+```
+
+## Sample Output
+
+
+
+```
+
+1. 기업 요약
+ → 스타트업의 제품/서비스, 핵심 기술, 비즈니스 모델, 시장 타겟 등 주요 정보를 간결하게 요약
+
+2. 시장성 평가
+ → 시장 규모, 성장률(CAGR), 경쟁 강도, 진입 장벽, 산업 트렌드 적합성 등 다섯 가지 항목별로 정리하여 분석
+
+3. 리스크 분석
+ → 기술, 시장, 조직, 기타 리스크에 대해
+ • 설명 + 위험도(낮음/중간/높음)로 구성된 평가
+
+4. 최종 판단
+ → 체크리스트 기반 정성 판단 + 가중치 기반 정량 평가(100점 만점)를 포함
+ → 최종적으로 ‘투자 적합 / 보류 / 부적합’ 판단과 함께 명확한 이유 제시
+
 ```
 
 ## Contributors 
