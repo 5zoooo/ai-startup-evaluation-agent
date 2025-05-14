@@ -16,8 +16,6 @@
 
 ## Tech Stack 
 
-|## Tech Stack 
-
 | Category       | Details                                                |
 |----------------|--------------------------------------------------------|
 | Framework      | LangChain, LangGraph, Python                           |
